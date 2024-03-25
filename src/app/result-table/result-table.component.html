@@ -1,0 +1,53 @@
+<ng-template [ngIf]="!noData">
+    <section class="optinalData">
+        <span> Show optional data: </span>
+        <input
+            id="validFrom"
+            type="checkbox"
+            name="validFrom"
+            (change)="showValidFrom()"
+        />
+        <label for="validFrom">Valid from</label>
+        <input
+            id="validTo"
+            type="checkbox"
+            name="validTo"
+            (change)="showValidTo()"
+        />
+        <label for="validTo">Valid to</label>
+    </section>
+    <ng-container *ngFor="let table of groupedData">
+        <table>
+            <thead>
+                <tr>
+                    <th>{{ table[0]['stationId'] }}</th>
+                    <th></th>
+                    <th></th>
+                    <ng-template [ngIf]="validFrom">
+                        <th></th>
+                    </ng-template>
+                    <ng-template [ngIf]="validTo">
+                        <th></th>
+                    </ng-template>
+                </tr>
+            </thead>
+            <tbody>
+                <ng-container *ngFor="let row of table">
+                    <tr>
+                        <td>{{ row['queryType'] }}</td>
+                        <td>{{ row['reportTime'] }}</td>
+                        <td [innerHTML]="row['text']"></td>
+                        <ng-template [ngIf]="validFrom">
+                            <td>{{ row['validFrom'] ? row['validFrom'] : 'N/A' }}</td>
+                        </ng-template>
+                        <ng-template [ngIf]="validTo">
+                            <td>{{ row['validTo'] ? row['validTo'] : 'N/A' }}</td>
+                        </ng-template>
+                    </tr>
+                </ng-container>
+            </tbody>
+        </table>
+    </ng-container>
+</ng-template>
+
+<ng-template [ngIf]="noData"><p class="noData">No data found for your selection.</p></ng-template>

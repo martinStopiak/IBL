@@ -1,0 +1,25 @@
+.tooltip {
+    position: relative;
+    display: inline-block;
+    vertical-align: middle;
+    svg {
+        fill: $textSecondaryColor;
+    }
+    .tooltiptext {
+        visibility: hidden;
+        width: 15rem;
+        background-color: $tooltipBackgroundColor;
+        color: $textSecondaryColor;
+        text-align: center;
+        border-radius: 0.25rem;
+        padding: 0.5rem;
+        font-size: 1rem;
+        position: absolute;
+        z-index: 1;
+        top: 1.5rem;
+        left: -6.5rem;
+    }
+    &:hover .tooltiptext {
+        visibility: visible;
+    }
+}

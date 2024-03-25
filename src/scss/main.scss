@@ -1,0 +1,36 @@
+main.main {
+    display: flex;
+    max-width: 100vw;
+    min-height: 100vh;
+    background-color: $backgroundPrimaryColor;
+    justify-content: center;
+    font-family: Georgia, 'Times New Roman', Arial;
+    > div.content {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+
+        > h1 {
+            display: block;
+            text-align: center;
+            font-size: 3rem;
+            padding: 2rem 0;
+            color: $textPrimaryColor;
+            text-transform: capitalize;
+            background-color: $backgroundSecondaryColor;
+        }
+
+        section#appForm {
+            background-color: $backgroundSecondaryColor;
+            justify-content: center;
+            display: flex;
+        }
+        section#appResultTable {
+            background-color: $backgroundPrimaryColor;
+            justify-content: center;
+            display: flex;
+            width: 80%;
+            margin: 2rem 10% 3rem;
+        }
+    }
+}

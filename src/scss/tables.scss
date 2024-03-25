@@ -1,0 +1,72 @@
+table {
+    text-align: left;
+    overflow: hidden;
+    margin: 0 auto;
+    display: table;
+    width: 100%;
+    padding: 0 0 0.5rem 0;
+    border: 2px solid $borderSecondaryColor;
+
+    th {
+        font-weight: bold;
+        font-size: 1.25rem;
+        text-align: left;
+        padding: 1rem;
+        color: $textDarkPrimaryColor;
+        background-color: $backgroundLightTertiaryColor;
+    }
+    tr {
+        &:nth-child(odd) {
+            background-color: $backgroundLightPrimaryColor;
+        }
+        &:nth-child(even) {
+            background-color: $backgroundLightSecondaryColor;
+        }
+
+        > td {
+            padding: 1rem;
+            font-weight: normal;
+            font-size: 1rem;
+
+            &:first-child {
+                width: 6rem;
+            }
+            &:nth-child(2) {
+                width: 7rem;
+            }
+
+            &:nth-child(4) {
+                width: 8rem;
+            }
+            &:nth-child(5) {
+                width: 8rem;
+            }
+
+            > span {
+                &.highlightRed {
+                    color: red;
+                }
+                &.highlightBlue {
+                    color: blue;
+                }
+            }
+        }
+    }
+}
+
+.noData {
+    color: $textSecondaryColor;
+    font-size: 1.25rem;
+    padding-top: 1rem;
+}
+
+section.optinalData {
+    text-align: right;
+    color: $textSecondaryColor;
+    font-size: 1rem;
+    margin-bottom: 0.75rem;
+
+    > span {
+        margin-right: 1rem;
+    }
+}

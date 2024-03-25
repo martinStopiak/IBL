@@ -1,0 +1,114 @@
+<form
+    name="flightBriefingForm"
+    [formGroup]="flightBriefingForm"
+    (ngSubmit)="onSubmit()"
+>
+    <div
+        class="checkboxGroupContainer"
+        formGroupName="messageTypes"
+    >
+        <p class="inputLabel required">&nbsp;Message Types</p>
+        <input
+            id="metar"
+            type="checkbox"
+            name="metar"
+            formControlName="METAR"
+        />
+        <label for="metar">METAR</label>
+
+        <input
+            id="sigmet"
+            type="checkbox"
+            name="sigmet"
+            formControlName="SIGMET"
+        />
+        <label for="sigmet">SIGMET</label>
+
+        <input
+            id="taf"
+            type="checkbox"
+            name="taf"
+            formControlName="TAF"
+        />
+        <label for="taf">TAF</label>
+        <ng-template [ngIf]="flightBriefingForm.controls['messageTypes'].errors">
+            <p class="errorMessage">! Minimum one message type must be selected</p>
+        </ng-template>
+    </div>
+
+    <label
+        class="inputLabel"
+        for="airports"
+        [ngClass]="{ required: !flightBriefingForm.controls['countries'].value }"
+    >
+        Airports
+        <span class="tooltip">
+            <svg
+                xmlns="http://www.w3.org/2000/svg"
+                x="0px"
+                y="0px"
+                width="20"
+                height="20"
+                viewBox="0 0 30 30"
+            >
+                <path
+                    d="M15,3C8.373,3,3,8.373,3,15c0,6.627,5.373,12,12,12s12-5.373,12-12C27,8.373,21.627,3,15,3z M16,21h-2v-7h2V21z M15,11.5 c-0.828,0-1.5-0.672-1.5-1.5s0.672-1.5,1.5-1.5s1.5,0.672,1.5,1.5S15.828,11.5,15,11.5z"
+                ></path>
+            </svg>
+            <span class="tooltiptext"
+                >Insert airport identifier (4 uppercase letter). Multiple airports must be separated by space.</span
+            >
+        </span>
+    </label>
+    <input
+        id="airports"
+        type="text"
+        formControlName="airports"
+        placeholder="Insert airports"
+        oninput="this.value = this.value.toUpperCase()"
+    />
+    <ng-template [ngIf]="flightBriefingForm.controls['airports'].errors?.hasOwnProperty('pattern') ? true : false">
+        <p class="errorMessage">! Inserted invalid airport identifier (s)</p>
+    </ng-template>
+
+    <label
+        class="inputLabel"
+        for="countries"
+        [ngClass]="{ required: !flightBriefingForm.controls['airports'].value }"
+    >
+        Countries
+        <span class="tooltip">
+            <svg
+                xmlns="http://www.w3.org/2000/svg"
+                x="0px"
+                y="0px"
+                width="20"
+                height="20"
+                viewBox="0 0 30 30"
+            >
+                <path
+                    d="M15,3C8.373,3,3,8.373,3,15c0,6.627,5.373,12,12,12s12-5.373,12-12C27,8.373,21.627,3,15,3z M16,21h-2v-7h2V21z M15,11.5 c-0.828,0-1.5-0.672-1.5-1.5s0.672-1.5,1.5-1.5s1.5,0.672,1.5,1.5S15.828,11.5,15,11.5z"
+                ></path>
+            </svg>
+            <span class="tooltiptext"
+                >Insert country identifier (2 uppercase letter). Multiple countries must be separated by space.</span
+            >
+        </span>
+    </label>
+    <input
+        id="countries"
+        type="text"
+        formControlName="countries"
+        placeholder="Insert countries"
+        oninput="this.value = this.value.toUpperCase()"
+    />
+    <ng-template [ngIf]="flightBriefingForm.controls['countries'].errors?.hasOwnProperty('pattern') ? true : false">
+        <p class="errorMessage">! Inserted invalid country identifier (s)</p>
+    </ng-template>
+    <button
+        type="submit"
+        [disabled]="!flightBriefingForm.valid || loading"
+    >
+        Create Briefing
+    </button>
+</form>
