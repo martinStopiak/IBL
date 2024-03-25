@@ -109,6 +109,6 @@
         type="submit"
         [disabled]="!flightBriefingForm.valid || loading"
     >
-        Create Briefing
+        {{ loading ? 'Loading Data...' : 'Create Briefing' }}
     </button>
 </form>
